@@ -1,0 +1,156 @@
+.ce_image{
+  &.round {
+    // figure{border-radius: 100%; overflow: hidden; display: inline-block;}
+    img{border-radius: 100%;}
+  }
+}
+
+// HEADER
+.headerFW{
+  @include media-max(xl){font-size: header(font-size);}
+  @include media-max(lg){font-size: header(font-size);}
+  &[data-stick=true]{position: sticky; top: var(--logo-wrapper-height);
+    &.is-reduce{top: -1px;}
+  }
+  &.is-reduce{
+    .headerFW__logo img{max-height: 80px;}
+  }
+  a:focus{color: inherit;}
+}
+.headerFW__wrapper {display: grid; grid-template-columns: 1fr; }
+.headerFW__logo__wrapper{ display: grid;grid-template-columns: Repeat(5, 1fr);}
+.headerFW__logo{grid-column: 2 / 5;margin: auto;}
+.headerFW__nav__wrapper{background: $primary; width: 100%; justify-content: space-around; align-items: center;
+  .headerFW__postnav{order: 0;color: #fff;}
+  .headerFW__lang {color: #fff; opacity: 0.6; transition: opacity 0.4s;background: none; 
+    &:hover{opacity: 1;}
+    a{color: inherit;
+      &:hover,&:focus{color: inherit;}
+    }
+  }
+  .mod_wem_sg_social_link{ white-space: nowrap;
+    a{color: inherit;
+      &:hover,&:focus{color: inherit;}
+    }
+  }
+}
+.headerFW__nav__inline{color: #fff;
+  li{
+    &.active, &.trail, &:hover, &:focus{
+      >*:not(ul){color: color(blacklight) !important; text-decoration: none !important;}
+
+    }
+  }
+}
+
+.headerFW__nav__panel .panel__actions{
+  .headerFW__postnav,
+  .headerFW__lang {color: inherit; text-align: center;}
+}
+
+#footer{
+  a{color: $primary;}
+}
+
+
+// PAGE ABOUT
+body.page-about{
+  .mod_article{background-size: cover; background-position: center center; background-repeat: no-repeat; min-height: 95vh; margin-bottom: 0;}
+  .mod_article#about-1{min-height: 100vh;
+    & .ce_rsce_timeline{text-shadow: 1px 1px 4px rgba(0,0,0,.8);}
+  }
+  .mod_article#determining-destiny{background-image: url('../../../../files/images/timeline/bg/Asset-73.png'); padding-top: 20vh; padding-bottom: 20vh;
+    &:before,
+    &:after{@include pseudo(); background-size: cover; background-position: center center; background-repeat: no-repeat;width: 100%; height: 20vh; left: 0;}
+    &:before{background-image: url('../../../../files/images/timeline/bg/Blue-to-yellow.jpg'); top: 0;}
+    &:after{background-image: url('../../../../files/images/timeline/bg/Blue-to-yellow.png'); bottom: 0;}
+  }
+  .mod_article#france{ margin-top: -1px;
+    &:before{@include pseudo(); top: 0;left: 0;width: 100%;height: 100%;background: url('../../../../files/images/timeline/bg/france_bg.jpg') center bottom no-repeat; background-size: cover; z-index: -1;}
+    &:after{@include pseudo(); top: 0;left: 0;width: 100%;height: 100%; z-index: -1;
+      @include linear-grad(
+        (
+          (#EBAD3C,10%,1),
+          (#EBAD3C,85%,0.8),
+          (color(white),100%,1)
+        ), 'to bottom'
+      );
+    }
+  }
+  .mod_article#abu-dhabi-oil-company{background-image: url('../../../../files/images/timeline/bg/oil-final.jpg'); background-position: center top; position: relative;
+    & .ce_text{position: absolute;top: 5.5rem;right: 16.5rem; max-width: 320px;
+      @media (max-width: 650px) {
+        right: auto; left: 7rem;
+      }
+    }
+    & .ce_image{text-align: right; & img{min-width: 650px; width: 650px;}}
+  }
+  .mod_article#carpe-diem{ background-color: color(greystronger); }
+  .mod_article#forging{}
+  .mod_article#rugby-1{background-image: url('../../../../files/images/timeline/bg/stadium1.jpg'); min-height: 100vh; margin-bottom: -1px;}
+  .mod_article#rugby-2{background-color: #5B777B;}
+  .mod_article#rugby-3{background-image: url('../../../../files/images/timeline/bg/player2.jpg');background-position: center top;}
+  .mod_article#legacy{ background-color: color(greystronger);}
+}
+
+
+// MODAL SEARCH
+.modalFW[data-name="modal_search"]{
+  & .modalFW__header{color: color(white);}
+  & .modalFW__content{padding: 2.5rem 6rem 6rem;}
+  & .modalFW__wrapper{background-color: $secondary; font-size: 1.5rem;}
+  & .formbody{@extend .d-grid,.cols-2,.cols-xs-1 !optional;
+    & div.widget:first-of-type{@extend .cols-span-2 !optional; font-size: 2.5rem;
+      & input{ text-align: center;}
+    }
+    & .select2-container,
+    & input{margin-bottom: 0;}
+  }
+}
+
+
+// NEWS LINE
+.mod_newslist{
+  &.line{gap: 5px; padding-bottom: 5px;}
+  &.parallax{position: relative; z-index: 1;}
+}
+.layout_latest_line{ min-width: 0; text-shadow: 1px 1px 4px rgba(0,0,0,.8);
+  & .block-card__wrapper{margin: 0;box-shadow: none;
+    &:before,&:after{display: none;}
+  }
+  & .block-card__figure{
+    &:after{@include pseudo(); width: 100%; height: 100%; top: 0; left: 0; z-index: 1; opacity: 0.3; background: #000; transition: opacity 0.6s;
+      // opacity: 0.6;  background: radial-gradient(transparent 40%, #111414), rgba(0, 0, 0, 0.1);
+    }
+  }
+  & .block-card__content{position: absolute; top: 0;bottom: 0; align-items: center; justify-content: center; color: white; font-weight: bold; flex-wrap: nowrap; overflow: hidden;
+    &>*{flex-shrink: 0;}
+  }
+  & .block-card__title{font-size: 2rem; font-size: calc(1rem + 1vw); padding: 15px 0; padding: calc(15px + 0.5vw) 0; line-height: 1.3; margin-top: 0;}
+  &:hover{
+    & .block-card__figure:after{opacity: 0.6;}
+  }
+}
+
+
+.mod_newslist .layout_latest_parallax{ @extend .layout_latest_line !optional; text-shadow: none; 
+  // min-height: 70vh;
+  & .block-card__wrapper{flex-direction: row; justify-content: center;align-items: center;
+    &:after,
+    &:before{display: none !important;}
+  }
+  & .block-card__figure{position: absolute; height: 100%; width: 100%; top: 0; left: 0; background-repeat: no-repeat; background-size: cover; background-position: center center; background-attachment: fixed;}
+  & .block-card__content{position: relative; flex-basis: 30vw; min-width: 400px; flex-grow: 0; color: inherit;
+    background: body(block-background); padding: 2em;
+  }
+  & .block-card__date_{
+    &:before{margin-right: 1rem; background: color(greylight);}
+    &:after{margin-left: 1rem; background: color(greylight);}
+    &>*{margin: 0 0.2rem;}
+  }
+  & .block-card__title{
+    & a:not([class*='btn']){color: inherit; text-decoration: none;
+      &:hover{color: $primary;}
+    }
+  }
+}
